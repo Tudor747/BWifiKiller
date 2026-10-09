@@ -204,15 +204,8 @@ static void drawScanProgress(const char* title, int percent, int found, const St
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-//  PATCH - overrides 802.11 frame validation
-//  This override only works if objcopy --weaken-symbol was applied
-//  to libnet80211.a
+//  Frame validation is provided by the unmodified ESP32 SDK.
 // ═══════════════════════════════════════════════════════════════════════════
-extern "C" int ieee80211_raw_frame_sanity_check(int32_t arg,
-                                                 int32_t arg2,
-                                                 int32_t arg3) {
-    return 0;   // always allow
-}
 
 // ═══════════════════════════════════════════════════════════════════════════
 //  CONFIGURATION
