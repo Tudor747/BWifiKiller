@@ -145,6 +145,10 @@ static void storeDevice(int idx, BLEAdvertisedDevice& dev) {
     btCompanyId[idx] = companyId;
     btRssi[idx] = dev.getRSSI();
     registerPing(btRssi[idx]);
+#ifdef PI_COMPANION
+    extern void companionBleObservation(const char*, const char*, int);
+    companionBleObservation(name.c_str(), address.c_str(), dev.getRSSI());
+#endif
 }
 
 class BtDeviceCallback : public BLEAdvertisedDeviceCallbacks {

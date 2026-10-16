@@ -12,7 +12,9 @@ const uint8_t InputManager::PINS[BTN_COUNT] = {
 
 void InputManager::begin() {
     for (uint8_t i = 0; i < BTN_COUNT; i++) {
+#ifndef PI_COMPANION
         pinMode(PINS[i], INPUT_PULLUP);
+#endif
         stableState[i]  = false;
         rawPrev[i]      = false;
         lastEdgeMs[i]   = 0;
@@ -29,7 +31,11 @@ void InputManager::update() {
     for (uint8_t i = 0; i < BTN_COUNT; i++) {
         events[i] = EVT_NONE;
 
+#ifdef PI_COMPANION
+        const bool raw = (int32_t)(remoteUntil[i] - now) > 0;
+#else
         const bool raw = (digitalRead(PINS[i]) == LOW);
+#endif
 
         if (raw != rawPrev[i]) {
             lastEdgeMs[i] = now;
@@ -91,5 +97,14 @@ void InputManager::resetAll() {
         lastRepeatMs[i] = 0;
         longFired[i]    = false;
         events[i]       = EVT_NONE;
+#ifdef PI_COMPANION
+        remoteUntil[i] = 0;
+#endif
     }
 }
+
+#ifdef PI_COMPANION
+void InputManager::remoteKey(ButtonId id, bool down) {
+    if (id < BTN_COUNT) remoteUntil[id] = down ? millis() + 700 : 0;
+}
+#endif

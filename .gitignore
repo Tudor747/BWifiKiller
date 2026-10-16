@@ -7,3 +7,9 @@
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/ipch
+__pycache__/
+*.pyc
+raspberry/.venv/
+raspberry/data/
+raspberry/config.local.json
+raspberry/artifacts/

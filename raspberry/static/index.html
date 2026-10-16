@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#11191f"><title>BWifiKill · Field Console</title>
+  <link rel="stylesheet" href="/static/app.css"><script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header><button class="brand" id="home" aria-label="Home"><span class="brand-mark">B<span>W</span></span><span>FIELD CONSOLE<small>BWifiKill · Raspberry Pi</small></span></button><div class="connection"><span id="link-dot" class="dot"></span><span id="link-label">Connecting…</span><span id="clock"></span></div></header>
+  <div id="demo" hidden>SIMULATION MODE · Device data is simulated · Network tests disabled</div>
+  <nav><button id="back">← Back</button><div id="breadcrumb">Workspace</div><button id="dashboard">Dashboard ↗</button></nav>
+  <main id="main" tabindex="-1"></main>
+  <footer><span id="footer-state">Local console · USB connection</span><button id="keyboard-toggle">Keyboard</button><button id="touch-toggle" aria-pressed="true">Touch mode: on</button></footer>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <section id="keyboard" aria-label="On-screen keyboard" hidden></section>
+</body>
+</html>

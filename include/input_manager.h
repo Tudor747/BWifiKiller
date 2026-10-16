@@ -71,6 +71,11 @@ public:
     // Clear all state. Call in appEnter() so a button held
     // when leaving the previous app does not carry into the new one.
     void resetAll();
+#ifdef PI_COMPANION
+    // Companion builds have no physical ESP32 controls. Remote holds expire
+    // automatically so a disconnected controller cannot leave a key stuck.
+    void remoteKey(ButtonId id, bool down);
+#endif
 
 private:
     static const uint8_t PINS[BTN_COUNT];
@@ -82,6 +87,9 @@ private:
     uint32_t    lastRepeatMs[BTN_COUNT] = {0};
     bool        longFired[BTN_COUNT]    = {false};
     ButtonEvent events[BTN_COUNT]       = {EVT_NONE};
+#ifdef PI_COMPANION
+    uint32_t remoteUntil[BTN_COUNT] = {0};
+#endif
 };
 
 extern InputManager Input;

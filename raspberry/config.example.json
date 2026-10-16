@@ -1,0 +1,15 @@
+{
+  "host": "127.0.0.1",
+  "port": 8765,
+  "serial_port": "auto",
+  "baud": 115200,
+  "demo": false,
+  "data_dir": "data",
+  "allowed_networks": ["127.0.0.0/8"],
+  "gpio": {
+    "enabled": false,
+    "pins": {},
+    "reserved_pins": [],
+    "chip": null
+  }
+}

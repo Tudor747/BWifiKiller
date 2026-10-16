@@ -1,5 +1,7 @@
 # BWifiKill ESP32 V4.0
 
+**Raspberry Pi touchscreen console:** see [raspberry/README.md](raspberry/README.md) for the local dashboard, USB companion firmware, Blue/Red Team checks, GPIO controls, and installation. Build the companion with `pio run -e pi_companion`; the original handheld remains `esp32dev`.
+
 ![Version](https://img.shields.io/badge/version-4.0-blue)
 ![Platform](https://img.shields.io/badge/platform-ESP32-orange)
 ![Framework](https://img.shields.io/badge/framework-PlatformIO-green)
